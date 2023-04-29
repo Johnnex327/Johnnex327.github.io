@@ -1,0 +1,212 @@
+
+body{
+	background-color: #F3F5FC;
+	font-family: 'Roboto', sans-serif;
+}
+
+.header{
+	display: grid;
+	grid-template-columns: 1fr 13fr;
+	margin-bottom: 10px;
+	margin-bottom: 3rem;
+}
+
+#logo{
+	width: 170px;
+	height: 100%;
+}
+
+
+
+.header div{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	color: #0A3871;
+}
+
+.container{
+	width: 80%;
+	min-width: 1400px;
+	height: fit-content;
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	gap: 50px;
+	margin-bottom: 5rem;
+	align-items: center;
+}
+
+
+.lado1{
+	display: flex;
+	flex-direction: column;
+	width: 95%;
+	height: 40rem;
+}
+
+.lado2{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 30%;
+	height: 40rem;
+	border-radius: 32px;
+	background: #FFFFFF;
+	box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+}
+
+.container_resultado{
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	height: 90%;
+	align-items: center;
+	justify-content: center;
+	overflow-y: scroll;
+	padding: 10px;
+}
+
+
+
+
+.container_resultado p{
+	width: 80%;
+	height: 10%;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 150%;
+	/* or 24px */	
+	text-align: center;
+/* Gray/gray-400 */
+	color: #495057;
+}
+
+.container_resultado label{
+	width: 80%;
+	height: 50px;
+	font-size: 30px;
+	color: #0A3871;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+
+.container_input{
+
+	resize: none;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	border-radius: 30px;
+	border: none;
+	text-align: center;
+	font-size: 30px;
+	color: #0A3871;
+}
+
+.container_superior{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.container_inferior{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 2rem;
+	justify-content: center;
+	align-items: flex-end; //alineando btns, bien abajo
+}
+
+.container_botones{
+	display: flex;
+	gap: 20px;
+}
+
+.btn{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 18px 90px;
+	width: fit-content;
+	height: fit-content;	
+	border-radius: 15px;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+	background: #D8DFE8;
+	border: solid 1px #0A3871;
+	color: #0A3871;
+}
+
+.btn:hover{
+	background-color: #0A3871;
+	transition: .3s;
+	color: white;
+}
+
+
+.btn_copiar{
+	background: #0A3871;	
+	color: white;
+}
+
+
+
+.container_button{
+
+	display: flex;
+	margin: 20px 0;
+}
+
+
+@media(max-width: 800px){
+
+	.container{
+		min-width: 100%;
+		width: 100%;
+		flex-direction: column;
+		gap: 10px;
+		margin-bottom: 1rem;
+	}
+
+	#logo{
+	width: 80px;
+	height: 90%;
+	}
+
+	.header div{
+	font-size: 10px;
+	}
+
+	.lado1{
+		height: 10rem;
+	}
+
+	.lado2{
+		width:90%;
+		height: 25rem;
+	}
+
+	.btn{
+		padding: 5px 25px;
+		border-radius: 3px;
+    }
+
+    .container_botones{
+       	gap: 2px;
+    }
+
+	
+}
+
+
+

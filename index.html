@@ -1,0 +1,175 @@
+
+<!Doctype HTML>
+<Html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-sacle=1">
+		<link rel="stylesheet" href="css/estilos.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+		<title>Encriptador</title>
+	</head>
+
+
+	<body>
+
+		<div class="header">
+			<div id='logo'>
+				<img
+					src='./img/logo.png'
+					width='100%'
+					height='100%'
+				/>
+			</div>
+			<div>
+				<h1>Encriptador/Desencriptador de Textos</h1>
+			</div>
+		</div>
+
+		<div class="container">
+			
+			<div class="lado1">
+				<div class="container_superior">
+						<textarea type='text' id='inputText' class="container_input"></textarea>
+				</div>
+			</div>
+
+			<div class="lado2">
+				<div class="container_resultado">
+					
+						<img
+							class='imagen_dibujo'
+					  		src='./img/imagen.jpg'
+					  		width='200px'
+					 		height='225px'
+						/>
+						<label class="resultado">Ningun mensaje fue encontrado </label>
+						<p id='indicacion'>Ingresa el texto que desees encriptar o desencriptar</p>
+					
+				</div>
+			</div>
+
+		</div>
+
+		<div class="container_inferior">
+            <div class="container_botones">
+                <button class="btn" onclick="encriptar()">Encriptar</button>
+                <button class="btn btn_desencriptar" onclick="desencriptar()">Desencriptar</button>
+                <button class="btn btn_desencriptar" onclick="limpiar()">Limpiar</button>
+            </div>  
+    	</div>
+
+		
+	</body>
+
+	<script>
+
+
+		var entrada;
+		let textoEncriptado;
+		let textoDesencriptado;
+		var resultado;
+		var container;
+
+		
+		function evaluarEntrada(){
+
+			mensaje = document.getElementById('inputText').value;
+
+			//Filtro de caracteres permitidos
+			var filtro = 'abcdfefghijklmnñopqrstuvwxyz ';
+
+			for(let i=0; i<=mensaje.length; i++){
+
+			caracter = mensaje.charAt(i);
+
+			if(!filtro.includes(caracter)){
+				console.log('Caracter no permitido '+caracter);
+				alert('Este texto contiene numeros o caracteres especiales o Mayusculas');
+				break;
+			}
+
+			return mensaje;
+
+
+		}
+		}
+
+
+		function encriptar(){
+
+
+
+			//Asigna el valor del inputText a la variable entrada
+			entrada =  evaluarEntrada();
+
+			//Encripta la variable entrada y lo asigna a 'textoEncriptado'
+			textoEncriptado = entrada.replace(/e/g, "enter").replace(/i/g, "imes").replace(/o/g, "ober").replace(/u/g, "ufat").replace(/a/g, "ai")
+			
+
+			//Imprime el texto encriptaddo, al container de resultado.
+			resultado = document.querySelector('.resultado')
+			resultado.textContent = textoEncriptado;
+
+			salida = textoEncriptado;
+			formatearHtml();
+
+		}	
+
+		function desencriptar(){
+
+			entrada =  evaluarEntrada();
+
+			textoDesencriptado = entrada.replace(/enter/g, "e").replace(/imes/g, "i").replace(/ober/g, "o").replace(/ufat/g, "u").replace(/ai/g, "a")
+
+			resultado = document.querySelector('.resultado')
+				resultado.textContent = textoDesencriptado;
+
+			salida = textoDesencriptado
+		}
+
+		function formatearHtml(){
+
+			//Elimina el container(img, label, p)
+			document.querySelector('.imagen_dibujo').style.display = 'none';
+			//resetea el inputText
+			document.getElementById('inputText').value = '';
+			//Elimina etiqueta <p>
+			document.getElementById('indicacion').outerHTML = "";
+
+			//Creacion del boton COPIAR
+			var button = document.createElement('input');
+			button.type = 'button'
+			button.id = 'copy'
+			button.value = 'Copiar'
+			button.className = 'container_button btn btn_copiar'
+			button.addEventListener("click", copiar, false);
+
+			//Agregar el boton al DOM, y evitar que boton copiar se vuelva a renderizar
+			if(container == undefined){
+				container = document.querySelector('.lado2');
+			container.appendChild(button);
+			}
+
+		}
+
+		function limpiar() {
+			document.getElementById('inputText').value = '';
+			var resultado = document.querySelector('.resultado').textContent;
+			if (resultado != 'Ningun mensaje fue encontrado'){
+				document.querySelector('.resultado').textContent = '';
+			}
+		}
+
+
+		function copiar() {
+			navigator.clipboard.writeText(salida);
+			alert('TEXTO COPIADO!!  Pegue el contenido en el cuadro, y luego presione en el boton desencriptar para descifrar el mensaje');
+		}
+
+	</script>
+
+
+</Html>
